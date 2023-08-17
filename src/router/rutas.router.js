@@ -1,9 +1,9 @@
 const express = require('express');
-const { Mostrar, mandar} = require('../controller/rutas.controller');
-const rutas = express.Router();
+const { Mostrar, mandar} = require('../controller/router.controller');
+const router = express.Router();
 
 
-rutas.get('/rutas', Mostrar)
-rutas.post("/rutas/agregar/:id", mandar)
+router.get('/router', Mostrar)
+router.post("/router/agregar/:id", mandar)
 
 module.exports = router

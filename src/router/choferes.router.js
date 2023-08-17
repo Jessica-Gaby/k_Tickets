@@ -1,14 +1,14 @@
 const express = require('express');
 const { Mostrar, mandar, lista, traer, actualizar, eliminar } = require('../controller/choferes.controller');
-const rutas = express.Router();
+const router = express.Router();
 
 
-rutas.get('/chofer', Mostrar)
-rutas.post("/chofer/agregar/:id", mandar)
-rutas.get("/chofer/lista", lista) 
-rutas.get('/chofer/eliminar/:id', eliminar)
-rutas.post('/chofer/editar/:id', actualizar)
-rutas.get('/chofer/editar/:id', traer)
-rutas.get('/chofer/eliminar/:id', eliminar)
+router.get('/chofer', Mostrar)
+router.post("/chofer/agregar/:id", mandar)
+router.get("/chofer/lista", lista) 
+router.get('/chofer/eliminar/:id', eliminar)
+router.post('/chofer/editar/:id', actualizar)
+router.get('/chofer/editar/:id', traer)
+router.get('/chofer/eliminar/:id', eliminar)
 
 module.exports = router

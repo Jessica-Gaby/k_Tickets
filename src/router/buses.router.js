@@ -1,14 +1,14 @@
 const express = require('express');
 const { Mostrar, mandar, lista, traer, actualizar, eliminar } = require('../controller/buses.controller');
-const rutas = express.Router();
+const router = express.Router();
 
 
-rutas.get('/buses', Mostrar)
-rutas.post("/buses/agregar/:id", mandar)
-rutas.get("/buses/lista", lista)
-rutas.get('/buses/eliminar/:id', eliminar)
-rutas.post('/buses/editar/:id', actualizar)
-rutas.get('/buses/editar/:id', traer)
-rutas.get('/buses/eliminar/:id', eliminar)
+router.get('/buses', Mostrar)
+router.post("/buses/agregar/:id", mandar)
+router.get("/buses/lista", lista)
+router.get('/buses/eliminar/:id', eliminar)
+router.post('/buses/editar/:id', actualizar)
+router.get('/buses/editar/:id', traer)
+router.get('/buses/eliminar/:id', eliminar)
 
 module.exports = router
