@@ -1,24 +1,26 @@
-const detalle_encomiendaCtl = {}
-const sql = require('../Database/dataBase.sql')
-const orm = require('../Database/dataBase.orm')
+const detalle_encomienda = {};
+const orm = require ('../Base de datos/BaseDatos.orm')
+const sql = require ('../Base de datos/BaseDatos.sql')
 
-
-detalle_encomiendaCtl.Mostrar = (req, res) => {
+detalle_encomienda.mostrar = async(req, res) => {
     res.render('detalle_encomienda/agregar');
-}
+};
 
-detalle_encomiendaCtl.mandar = async(req, res)=>{
-    const { nombre_cooperativad, tamaño_encomienda, fecha_envio, nro_registro_transporte, peso} = req.body
-    const nuevoDetalle_encomienda ={
-        nombre_cooperativad, 
-        tamaño_encomienda, 
-        fecha_envio, 
-        nro_registro_transporte, 
-        peso
+detalle_encomienda.mandar = async(req, res) => {
+
+    const { nombres_cooperativa_detalle_encomienda,tamaño_detalle_encomienda,fecha_envio_detalle_encomienda,numero_registro_detalle_encomienda,peso_detalle_encomienda } = req.body
+    const nuevoDetalle_encomienda = {
+        nombres_cooperativa_detalle_encomienda,
+        tamaño_detalle_encomienda,
+        fecha_envio_detalle_encomienda,
+        numero_registro_detalle_encomienda,
+        peso_detalle_encomienda
     }
+
     await orm.detalle_encomienda.create(nuevoDetalle_encomienda)
-    req.flash('success', 'Guardado con exito')
-    res.redirect('/detalle_encomienda/lista');
+
+    req.flash('success', 'Guardado con éxito')
+    res.redirect('/detalle_encomienda/lista')
 }
 
 detalle_encomienda.lista = async(req, res) => {
@@ -35,13 +37,13 @@ detalle_encomienda.traer = async(req, res) => {
 
 detalle_encomienda.actualizar = async(req, res) => {
 
-    const { id_detalle_encomienda, nombre_cooperativad, tamaño_encomienda, fecha_envio, nro_registro_transporte, peso} = req.body
+    const { id_detalle_encomienda,nombres_cooperativa_detalle_encomienda,tamaño_detalle_encomienda,fecha_envio_detalle_encomienda,numero_registro_detalle_encomienda,peso_detalle_encomienda} = req.body
     const nuevoDetalle_encomienda = {
-        nombre_cooperativad, 
-        tamaño_encomienda, 
-        fecha_envio, 
-        nro_registro_transporte, 
-        peso
+        nombres_cooperativa_detalle_encomienda,
+        tamaño_detalle_encomienda,
+        fecha_envio_detalle_encomienda,
+        numero_registro_detalle_encomienda,
+        peso_detalle_encomienda
     }
     await orm.detalle_encomienda.findOne({ where: { id_detalle_encomienda: id_detalle_encomienda } })
         .then(actualizar => {
@@ -60,4 +62,4 @@ detalle_encomienda.eliminar = async(req, res) => {
         })
 }
 
-module.exports  = detalle_encomiendaCtl
+module.exports = detalle_encomienda

@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/registro_encomienda.css">
+<from action="/"method="post">
+<body>
+    <head>
+    <div id="contendodrhe">
+        <div>
+            <div class="navbar">
+                <div id="imagen">
+                    <img src="/img/logon.png"></img></div>
+                    <a id="inicio" href="#">Inicio</a>
+                    <button id="boton" type="button" href="#">Ingresar</button>
+            </div>
+    </div>
+</head>
+  <div class="container">
+    <h2>Registro de Encomiendas</h2>
+    <form id="encomienda-form">
+      <label for="destinatario">Destinatario:</label>
+      <input type="text" id="destinatario" name="destinatario" required>
+
+      <label for="direccion">Dirección:</label>
+      <textarea id="direccion" name="direccion" rows="4" required></textarea>
+
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" name="peso" step="0.01" required>
+
+      <button type="submit">Registrar Encomienda</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("encomienda-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var destinatario = document.getElementById("destinatario").value;
+      var direccion = document.getElementById("direccion").value;
+      var peso = parseFloat(document.getElementById("peso").value);
+
+      // Aquí podrías enviar los datos a tu backend para guardar la encomienda
+      // Por ejemplo, puedes usar Fetch API o cualquier otra biblioteca para hacer una solicitud POST al servidor
+
+      alert("Encomienda registrada:\nDestinatario: " + destinatario + "\nDirección: " + direccion + "\nPeso: " + peso + " kg");
+    });
+  </script>
+  <footer id="footer" class="">
+      <div class="container">
+        <div class="row text-left">
+          <div class="contact">
+            <p>Contactanos</p>
+            <img id="btnwasa" src="/img/wasa.png" alt=""><br>
+            <img id="btnmail" src="/img/mail.png" alt=""><br>
+            <img id="btntelef" src="/img/telef.png" alt="">
+          </div>
+          <div id="destin">
+            <p>Destinos</p><br>
+            <a>Playa</a><br>
+            <a>Montaña</a><br>
+            <a>Inolvidables eventos</a>
+          </div>
+          <div class="soport">
+            <p>Soporte</p>
+            
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</from>
