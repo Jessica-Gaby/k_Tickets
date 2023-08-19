@@ -82,6 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./router/inicio.router'));
 
 //detalle encomienda
-app.use("/detalle_encomienda",require('./router/detalle_encomienda.router'));
+//app.use("/detalle_encomienda",require('./router/detalle_encomienda.router'));
+app.use(require('./router/detalle_encomienda.router'));
 
 module.exports = app;

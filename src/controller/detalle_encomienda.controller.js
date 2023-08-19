@@ -1,12 +1,12 @@
-const detalle_encomienda = {};
-const orm = require ('../Base de datos/BaseDatos.orm')
-const sql = require ('../Base de datos/BaseDatos.sql')
+const detalle_encomiendaCtl = {};
+const orm = require ('../Database/dataBase.orm')
+const sql = require ('../Database/dataBase.sql')
 
-detalle_encomienda.mostrar = async(req, res) => {
+detalle_encomiendaCtl.mostrar = async(req, res) => {
     res.render('detalle_encomienda/agregar');
 };
 
-detalle_encomienda.mandar = async(req, res) => {
+detalle_encomiendaCtl.mandar = async(req, res) => {
 
     const { nombres_cooperativa_detalle_encomienda,tamaño_detalle_encomienda,fecha_envio_detalle_encomienda,numero_registro_detalle_encomienda,peso_detalle_encomienda } = req.body
     const nuevoDetalle_encomienda = {
@@ -23,19 +23,19 @@ detalle_encomienda.mandar = async(req, res) => {
     res.redirect('/detalle_encomienda/lista')
 }
 
-detalle_encomienda.lista = async(req, res) => {
+detalle_encomiendaCtl.lista = async(req, res) => {
     const lista = await sql.query('select * from detalle_encomienda')
     res.render('detalle_encomienda/lista', { lista })
 }
 
-detalle_encomienda.traer = async(req, res) => {
+detalle_encomiendaCtl.traer = async(req, res) => {
     const ids = req.params.id
     const lista = await sql.query('select * from detalle_encomienda where id_detalle_encomienda=?', [ids])
     res.render('detalle_encomienda/editar', { lista })
 }
 
 
-detalle_encomienda.actualizar = async(req, res) => {
+detalle_encomiendaCtl.actualizar = async(req, res) => {
 
     const { id_detalle_encomienda,nombres_cooperativa_detalle_encomienda,tamaño_detalle_encomienda,fecha_envio_detalle_encomienda,numero_registro_detalle_encomienda,peso_detalle_encomienda} = req.body
     const nuevoDetalle_encomienda = {
@@ -53,7 +53,7 @@ detalle_encomienda.actualizar = async(req, res) => {
     res.redirect('/detalle_encomienda/lista')
 }
 
-detalle_encomienda.eliminar = async(req, res) => {
+detalle_encomiendaCtl.eliminar = async(req, res) => {
     const ids = req.params.id
     await orm.detalle_encomienda.destroy({ where: { id_detalle_encomienda: ids } })
         .then(() => {
@@ -62,4 +62,4 @@ detalle_encomienda.eliminar = async(req, res) => {
         })
 }
 
-module.exports = detalle_encomienda
+module.exports = detalle_encomiendaCtl

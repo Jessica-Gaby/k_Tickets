@@ -1,5 +1,5 @@
 const detalleEncomienda =(sequelize, type) =>{
-    return sequelize.define('detalleencomienda',{
+    return sequelize.define('detalleencomiendas',{
         id_detalleencomienda:{
             type: type.INTEGER, 
             primarykey: true,
@@ -7,9 +7,9 @@ const detalleEncomienda =(sequelize, type) =>{
         },
         nombreCooperativaDetalleEncomienda: type.STRING,
         tamañoDetalleEncomienda: type.INTEGER,
-        fechaEnvioDetalleEncomienda: type.DATE,
+        fechaEnvioDetalleEncomienda: type.STRING,
         nroRegistroTransporteDetalleEncomienda: type.INTEGER,
-        pesoDetalleEncomienda: type.FLOAT,
+        pesoDetalleEncomienda: type.INTEGER,
 
     crearDetalleEncomienda: {
             type: 'TIMESTAMP',
